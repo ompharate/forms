@@ -2,7 +2,7 @@ import React from 'react'
 
 const MainInfo = () => {
     return (
-        <div className='max-w-7xl mx-auto font-Inter h-screen py-20 '>
+        <div className='max-w-7xl mx-auto font-Inter py-20 '>
             <div className="max-w-5xl mx-auto  py-5 ">
                 <h1 className='text-3xl  font-bold text-white text-center lg:text-7xl'>Shaping a world with <br /> reimagination.</h1>
                 <p className='text-gray-500 text-center py-8 text-sm lg:text-base'>
