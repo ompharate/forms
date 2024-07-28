@@ -27,7 +27,7 @@ const Navbar = () => {
 
     return (
         <div className='w-full font-Inter'>
-            <div className='px-2 max-w-7xl mx-auto flex justify-between py-4'>
+            <div className='px-2 max-w-7xl mx-auto items-center flex justify-between py-4'>
                 <h1 className='text-3xl font-bold text-white'>
                     CrazyForms
                 </h1>
