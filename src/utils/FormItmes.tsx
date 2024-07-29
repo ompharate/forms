@@ -22,7 +22,7 @@ export const fields: FieldTypes[] = [{
     {
       icon: <LuTextCursorInput />,
       name: "input",
-      item: <Input placeholder={undefined} backgroundColor={''} borderColor={''} width={undefined} />,
+      item: <Input placeholder={undefined} backgroundColor={''} borderColor={''} width={''} />,
     },
     {
       icon: <CiText />,
@@ -33,6 +33,6 @@ export const fields: FieldTypes[] = [{
   secondary: [{
     name: "textarea",
     icon: <BsTextareaResize />,
-    item: <TextArea />
+    item: <TextArea placeholder={undefined} backgroundColor={''} borderColor={''} width={''} />
   }]
 }];

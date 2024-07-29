@@ -1,5 +1,4 @@
 import { ReactNode, useState } from "react";
-import "react-color-palette/css";
 import { Properties } from '../utils/FormComponents';
 import MainFormPrev from '../components/MainFormPrev';
 import RightSection from '../components/RightSection';
@@ -12,24 +11,23 @@ interface formData {
         placeholder: string
         borderColor: string,
         backgroundColor: string,
-        width: string | undefined
+        width: string 
     }[];
 };
 
 const CreateForm = () => {
-    const [color, setColor] = useColor("#561ecb");
-    const [activeProp, setActiveProp] = useState<number>(1);
-    console.log(color)
+    const [color, setColor] = useColor("#a193bd");
+    const [activeProp, setActiveProp] = useState<number>(0);
     const [formData, setFormData] = useState<formData>({
         defaultButton: "Submit",
         items: [],
     })
-    function handleAction(item: ReactNode) {
+    function handleAction(item: ReactNode,name:string) {
         const newItem = {
-            name: "item 1",
+            name: name,
             item: item,
             placeholder: "Enter the placeholder...",
-            borderColor: "black", backgroundColor: "white", width: undefined
+            borderColor: "black", backgroundColor: "white", width: "100%"
         }
         setFormData((prevFormData) => ({
             ...prevFormData,
@@ -44,7 +42,7 @@ const CreateForm = () => {
             </div>
             <MainFormPrev backgroundColor={color.hex} formData={formData} setActiveProp={setActiveProp} />
             <div className="h-[500px] py-5 px-3 w-[20%]">
-                <RightSection color={color} setColor={setColor} handleAction={handleAction}/>
+                <RightSection formData={formData} color={color} setColor={setColor} handleAction={handleAction}/>
             </div>
         </div>
     )

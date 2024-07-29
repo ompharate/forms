@@ -19,7 +19,7 @@ interface props {
 const MainFormPrev = ({ backgroundColor, formData, setActiveProp }: props) => {
     return (
         <div style={{
-            backgroundColor: backgroundColor ? `${backgroundColor}` : "white",
+            backgroundColor: backgroundColor,
         }} className='w-full py-5'>
             <div className="flex flex-col gap-2 max-w-5xl mx-auto">
 
@@ -39,5 +39,4 @@ const MainFormPrev = ({ backgroundColor, formData, setActiveProp }: props) => {
         </div>
     )
 }
-
 export default MainFormPrev

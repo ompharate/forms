@@ -1,11 +1,10 @@
-// FormComponents.tsx
 import React, { ReactNode, useState } from 'react';
 
 interface Properties {
     placeholder: string | undefined
     borderColor: string,
     backgroundColor: string,
-    width: string | undefined
+    width: string
 }
 
 interface formData {
@@ -16,19 +15,25 @@ interface formData {
         placeholder: string
         borderColor: string,
         backgroundColor: string,
-        width: string | undefined
+        width: string
     }[];
 };
 
-export const Input = (props: Properties) => <input style={{
+export const Input = (props: Properties) => {
+    return <input style={{
+        border: "1px solid",
+        borderColor: props.borderColor,
+        backgroundColor: props.backgroundColor,
+        width: props.width
+    }} className='rounded-md outline-none py-3 px-2' placeholder={props.placeholder} type="text" />;
+}
+export const Text = (props: Properties) => <p>Some text</p>;
+export const TextArea = (props: Properties) => <textarea style={{
     border: "1px solid",
     borderColor: props.borderColor,
     backgroundColor: props.backgroundColor,
-    width:  props.width!=undefined ?  parseInt(props.width) : "100%"
-
-}} className='rounded-md outline-none py-3 px-2  focus:border-red-500 focus:border-2' placeholder={props.placeholder} type="text" />;
-export const Text = (props: Properties) => <p>Some text</p>;
-export const TextArea = () => <textarea className='rounded-md outline-none py-3 px-2 w-full' />;
+    width: props.width
+}} className='rounded-md outline-none py-3 px-2 w-full' />;
 
 export const Properties = ({ formData, index, setFormData }: { formData: formData, index: number, setFormData: React.Dispatch<React.SetStateAction<formData>> }) => {
     const [placeholder, setPlaceholder] = useState<string>("")
@@ -48,8 +53,8 @@ export const Properties = ({ formData, index, setFormData }: { formData: formDat
         const newItem = {
             name: item.name,
             item: item.item,
-            placeholder: placeholder
-            , borderColor: borderColor, backgroundColor: backgroundColor, width: width
+            placeholder: placeholder ? placeholder : item.placeholder
+            , borderColor: borderColor ? borderColor : item.borderColor, backgroundColor: backgroundColor ? backgroundColor : item.backgroundColor, width: width ? width : "100%"
         }
         setFormData((prevFormData) => ({
             ...prevFormData,
@@ -58,10 +63,10 @@ export const Properties = ({ formData, index, setFormData }: { formData: formDat
     }
     return (
         <div className='flex flex-col gap-2'>
-            <h2 className='text-red-400'> {error ? " Please select any field" :null}</h2>
+            <h2 className='text-red-400'> {error ? " Please select any field" : null}</h2>
             <div className='flex gap-2'>
-                <input className='rounded-md outline-none py-2 px-2 w-full' type="text" value={width ? width : undefined} onChange={(e) => setWidth(e.target.value)} placeholder="Width" />
-                <input className='rounded-md outline-none py-2 px-2 w-full' type="text" value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)} placeholder="Background Color" />
+                <input className='rounded-md outline-none py-2 px-2 w-full' type="text" value={width} onChange={(e) => setWidth(e.target.value)} placeholder="Width: 10px" />
+                <input className='rounded-md outline-none py-2 px-2 w-full' type="text" value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)} placeholder="Bg: red, #HEX" />
             </div>
             <div className='flex flex-col gap-2'>
                 <input className='rounded-md outline-none py-2 px-2 w-full' type="text" value={borderColor} onChange={(e) => setBorderColor(e.target.value)} placeholder="Border Color" />
